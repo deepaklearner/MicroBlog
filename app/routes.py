@@ -1,6 +1,8 @@
 from flask import render_template
 from app import app
 
+app.config['SECRET_KEY'] = "you-will-never-guess"
+
 @app.route('/')
 @app.route('/index.html')
 def index():
@@ -23,4 +25,6 @@ def index():
             "body"  : "Hey guyzzz"
         }
     ]
+    secret_key = app.config['SECRET_KEY']
+    print(secret_key)
     return render_template('index.html', title='Home', username=user['username'], posts=posts)
